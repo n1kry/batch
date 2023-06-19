@@ -12,9 +12,8 @@ import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication
 @AllArgsConstructor
 public class BatchApplication implements CommandLineRunner {
     private JobLauncher jobLauncher;
@@ -25,7 +24,7 @@ public class BatchApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         JobParameters jobParameters = new JobParametersBuilder()
                 .addLong("startAt",System.currentTimeMillis())
                 .toJobParameters();
